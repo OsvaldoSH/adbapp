@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // Ruta de prueba para verificar la conexion
-app.get('/api/vacio', (req, res) =>{
-    db.query('SELECT * FROM vacio', (err, results) => {
+app.get('/api/puesto', (req, res) =>{
+    db.query('SELECT * FROM puesto', (err, results) => {
         if (err) {
             console.error('Error en la consulta: ', err);
             res.status(500).json({ error: 'Error al obtener datos'});
