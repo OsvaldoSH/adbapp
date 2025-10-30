@@ -1,31 +1,45 @@
 import React from "react";
+import TarjetaRuta from "./components/TarjetaRuta";
 import './ControlVacio.css';
 
 const ControlVacio = () => {
+    const rutasEjemplo = [
+        {
+            id: 1,
+            nombre: "Ruta 01",
+            vehiculo: "Ford 350",
+            fecha: "4 oct 2025",
+            debe: 100,
+            entregados: 90,
+            saldo: 10
+        },
+        {
+            id: 3,
+            nombre: "Ruta 02",
+            vehiculo: "Ford 450",
+            fecha: "4 oct 2025",
+            debe: 80,
+            entregados: 75,
+            saldo: 5
+        },{
+            id: 1,
+            nombre: "Ruta 08",
+            vehiculo: "Hilux",
+            fecha: "4 oct 2025",
+            debe: 150,
+            entregados: 120,
+            saldo: 30
+        },
+    ];
+
     return (
         <div className="control-vacio-page">
-            <h1>Control de Vacio - Resumen de Ruta</h1>
-            
-            <div className="resumen-ruta">
-                <div className="tarjeta-estadistica">
-                    <h3>Ruta 01</h3>
-                    <div className="estadisticas">
-                        <div className="estadistica-item">
-                            <span className="valor">15</span>
-                            <span className="label">Clientes visiados</span>
-                        </div>
+            <h1>Control de Vacio</h1>
 
-                        <div className="estadistica-item">
-                            <span className="valor">8</span>
-                            <span className="label">Vacios recolectados</span>
-                        </div>
-
-                        <div className="estadistica-item">
-                            <span className="valor">120</span>
-                            <span className="label">Total vacios</span>
-                        </div>
-                    </div>
-                </div>
+            <div className="rutas-container">
+                {rutasEjemplo.map(ruta => (
+                    <TarjetaRuta key={ruta.id} ruta={ruta}/>
+                ))}
             </div>
         </div>
     );

@@ -1,0 +1,74 @@
+.tarjeta-ruta {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-ruta:hover {
+    transform: translateY(-5px);
+}
+
+.ruta-info {
+    margin-bottom: 1.5rem;
+}
+
+.vehiculo {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.fecha {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.estadistica {
+    text-align: center;
+    flex: 1;
+}
+
+.numero {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #D4AF37;
+}
+
+.label {
+    font-size:0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.btn-entregar {
+    background: #D4AF37;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-entregar:hover {
+    background: #B8860B;
+}
+
+.ruta-header h2 {
+    color: #333;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.estadisticas-ruta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
