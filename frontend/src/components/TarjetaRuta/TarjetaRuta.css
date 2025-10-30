@@ -28,7 +28,7 @@
     margin-bottom: 0.5rem;
 }
 
-.fecha {
+.encargado {
     color: #666;
     font-size: 0.9rem;
 }
@@ -57,7 +57,7 @@
     font-weight: 600;
 }
 
-.btn-entregar {
+.btn-detalle {
     background: #D4AF37;
     color: white;
     border: none;
@@ -70,7 +70,7 @@
     font-size: 1rem;
 }
 
-.btn-entregar:hover {
+.btn-detalle:hover {
     background: #B8860B;
     transform: translateY(-2px);
 }

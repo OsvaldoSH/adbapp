@@ -1,62 +1,75 @@
 import React, { useState } from "react";
 import TarjetaRuta from "../../components/TarjetaRuta/TarjetaRuta";
 import ListaRutas from "../../components/ListaRutas/ListaRutas";
+import { rutasService } from "../../services/rutasService";
 import './ControlVacio.css';
+import { useEffect } from "react";
 
 const ControlVacio = () => {
-    const [rutaSeleccionada, setRutaSeleccionada] = useState(null);
+    const [rutas, setRutas] = useState([]);
+    const [ loading, setLoading] = useState(true);
+    const [ error, setError] = useState(null);
 
-    const rutasEjemplo = [
-        {
-            id: 1,
-            nombre: "Ruta 01",
-            vehiculo: "Ford 350",
-            fecha: "4 oct 2025",
-            debe: 100,
-            entregados: 90,
-            saldo: 10
-        },
-        {
-            id: 2,
-            nombre: "Ruta 02",
-            vehiculo: "Ford 450",
-            fecha: "4 oct 2025",
-            debe: 80,
-            entregados: 75,
-            saldo: 5
-        },{
-            id: 3,
-            nombre: "Ruta 03",
-            vehiculo: "Hilux",
-            fecha: "4 oct 2025",
-            debe: 150,
-            entregados: 120,
-            saldo: 30
-        },
-    ];
+    useEffect(() => {
+        const cargarRutas = async () => {
+            try {
+                setLoading(true);
+                const rutasData = await rutasService.getTarjetasRutas();
+                setRutas(rutasData);
+            } catch (err) {
+                setError('Error al cargar las rutas');
+                console.error('Error:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const handleRutaClick = (ruta) => {
-        setRutaSeleccionada(ruta);
+        cargarRutas();
+    }, []);
+
+    const handleDetalleClick = (ruta) => {
+        console.log('Ver detalle de: ', ruta);
+    };
+
+    if (loading) {
+        return (
+            <div className="control-vacio-page">
+                <h1>Control de vacio</h1>
+                <div className="cargando">Cargando rutas...</div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="control-vacio-page">
+                <h1>Control de vacio</h1>
+                <div className="error">{error}</div>
+            </div>
+        );
     }
 
     return (
         <div className="control-vacio-page">
-            <h1>Control de Vacio</h1>
+            <h1>Control de vacio</h1>
 
-            { /*Vista movil - Lista Compacta*/ }
-
+            {/* Vista movil compacta */}
             <div className="vista-movil">
                 <ListaRutas
-                rutas={rutasEjemplo}
-                onRutaClick={handleRutaClick}
+                    rutas={rutas}
+                    onRutaClick={handleDetalleClick}
                 />
             </div>
 
-            { /*Vista Desktop - Grid de Tarjetas*/ }
+            {/* Vista desktop */}  
             <div className="vista-desktop">
                 <div className="rutas-grid">
-                    {rutasEjemplo.map (ruta => (
-                        <TarjetaRuta key={ruta.id} ruta={ruta}/>
+                    {rutas.map(ruta => (
+                        <TarjetaRuta
+                            key={ruta.id}
+                            ruta={ruta}
+                            onEntregar={handleDetalleClick}
+                        />
                     ))}
                 </div>
             </div>

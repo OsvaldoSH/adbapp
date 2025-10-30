@@ -10,17 +10,17 @@ const TarjetaRuta = ({ruta, onEntregar }) => {
 
             <div className="ruta-info">
                 <div className="vehiculo">{ruta.vehiculo}</div>
-                <div className="fecha">{ruta.fecha}</div>
+                <div className="encargado">Encargado: {ruta.encargado}</div>
             </div>
 
             <div className="saldo-principal">
                 <div className="saldo-numero">{ruta.saldo}</div>
                 <div className="saldo-label">Saldo Actual</div>
             </div>
-            <button className="btn-entregar"
+            <button className="btn-detalle"
             onClick={() => onEntregar(ruta)}
             >
-                Entregar
+                Detalle
             </button>
         </div>
     );
