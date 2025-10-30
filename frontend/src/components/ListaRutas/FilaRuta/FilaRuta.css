@@ -33,13 +33,13 @@
     font-size: 0.9rem;
 }
 
+.vehiculo {
+    color: #666;
+}
+
 .saldo {
     color: #D4AF37;
     font-weight: bold;
-}
-
-.fecha {
-    color: #666;
 }
 
 .fila-accion {
