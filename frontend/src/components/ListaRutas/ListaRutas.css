@@ -1,0 +1,25 @@
+.lista-rutas {
+    width: 100%;
+}
+
+.lista-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+.lista-header h3 {
+    color: #333;
+    margin: 0;
+}
+
+.total-rutas {
+    color: #666;
+    font-size: 1rem;
+}
+
+.lista-contenido {
+    width: 100%;
+}

@@ -9,9 +9,27 @@
     text-align: center;
 }
 
-.rutas-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+/* Vista Móvil (por defecto) */
+.vista-desktop {
+    display: none;
 }
+
+/* Vista Desktop */
+@media (min-width: 768px) {
+    .vista-movil {
+        display: none;
+    }
+
+    .vista-desktop {
+        display: block;
+    }
+
+    .rutas-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+}
+
+
