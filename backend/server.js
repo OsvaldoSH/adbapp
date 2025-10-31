@@ -14,7 +14,12 @@ app.get('/api/rutas/tarjetas', (req, res) => {
             r.vehiculo,
             e.nombre as encargado,
             r.fecha_creacion as fecha,
-            0 as saldo
+            COALESCE((
+                SELECT SUM(rd.cantidad)
+                FROM recepcion_detalle rd
+                JOIN recepcion rec ON rd.recepcion_id = rec.id
+                WHERE rec.ruta_id = r.id    
+            ), 0) as saldo
         FROM ruta r
         JOIN empleado e ON r.empleado_id = e.id
         WHERE r.estado = 'activa'

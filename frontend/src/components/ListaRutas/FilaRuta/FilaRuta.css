@@ -11,11 +11,6 @@
     transition: all 0.3s ease;
 }
 
-.fila-ruta:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
 .fila-info {
     flex: 1;
 }
@@ -23,27 +18,41 @@
 .ruta-nombre {
     font-weight: bold;
     color: #333;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 0.25rem;
 }
 
 .ruta-detalles {
     display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.vehiculo {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95rem;
 }
 
 .encargado {
     color: #666;
+    font-size: 0.95rem;
 }
 
+.saldo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 1rem;
+}
 .saldo {
     color: #D4AF37;
     font-weight: bold;
+    font-size: 2rem;
+    white-space: nowrap;
 }
 
 .fila-accion {
-    color: #D4AF37;
-    font-size: 1.2rem;
-    padding-left: 1rem;
+    color: dark;
+    font-size: 1.8rem;
 }
