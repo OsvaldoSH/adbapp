@@ -36,6 +36,31 @@ app.get('/api/rutas/tarjetas', (req, res) => {
     });
 });
 
+app.get('/api/empleados', (req, res) => {
+    const query =`
+    SELECT
+        e.id,
+        e.nombre,
+        e.apellido,
+        e.edad,
+        e.apodo,
+        p.nombre_puesto as puesto,
+        e.fecha_ingreso,
+        e.estado
+    FROM empleado e
+    JOIN puesto p ON e.puesto_id = p.id
+    WHERE e.estado = 'activo'    
+    `;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error en la consulta de empleados:', err);
+            return res.status(500).json({error: 'Error del servidor'});
+        }
+        res.json(results);
+    });
+});
+
 // Puerto del servidor
 const PORT = 3001;
 app.listen(PORT, () => {
