@@ -9,6 +9,13 @@
     text-align: center;
 }
 
+.empleados-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 .empleados-grid {
     display: flex;
     flex-wrap: wrap;
@@ -32,4 +39,19 @@
     border-radius: 8px;
     margin: 1rem auto;
     max-width: 400px;
+}
+
+.btn-agregar {
+    background: #D4AF37;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-agregar:hover {
+    background: #B8860B;
 }

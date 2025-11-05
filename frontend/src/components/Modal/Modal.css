@@ -23,7 +23,7 @@
 
 .modal-header h2 {
     color: #D4AF37;
-    margin: 0;
+    margin: 15px;
 }
 
 .modal-close {
@@ -32,6 +32,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     color: #666;
+    text-align: left;
 }
 
 .modal-body {
