@@ -1,0 +1,131 @@
+.tarjeta-empleado {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    padding: 0.8rem;
+    max-width: 180px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-empleado:hover {
+    transform: translateY(-5px);
+}
+
+.empleado-foto {
+    margin-bottom: 1rem;
+}
+
+.foto-placeholder {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #D4AF37, #F7EF8A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    border: 2px solid #D4AF37;
+    color: #333;
+}
+
+.empleado-info h3 {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.empleado-apodo {
+    display: block;
+    color: #D4AF37;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin: 0 0 0.8rem 0;
+    font-weight: bold;
+}
+
+.empleado-detalles {
+    text-align: center;
+    display: block;
+}
+
+.empleado-detalles p {
+    margin: 0.3rem 0;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.empleado-detalles span:first-child {
+    font-weight: bold;
+    color: #333;
+    margin-right: 0.5rem;
+}
+
+.estado.activo {
+    color: #27AE60;
+    font-weight: bold;
+}
+
+.estado.inactivo {
+    color: #E74C3C;
+    font-weight: bold;
+}
+
+.empleado-puesto {
+    color: #D4AF37;
+    font-weight: bold;
+    margin: 0.3rem 0;
+}
+
+/* Boton expandir solo en el movil*/
+.movile-expandir {
+    display: none; /* Este es el que lo oculta*/
+    color: #D4AF37;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Media query para el movil*/
+@media (max-width: 768px){
+    .tarjeta-empleado {
+        max-width: 150px;
+        padding: 0.6rem;
+    }
+
+    .foto-placeholder {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    .movile-expandir {
+        display: block;
+    }
+
+    .empleado-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .empleado-detalles {
+        display: none;
+    }
+
+    .empleado-puesto {
+        font-size: 0.8rem;
+    }
+
+    .empleado-detalles.expandido {
+        display: block;
+    }
+
+    .empleado-apodo {
+        display: none;
+    }
+
+    .empleado-apodo.expandido {
+        display: block;
+    }
+}
