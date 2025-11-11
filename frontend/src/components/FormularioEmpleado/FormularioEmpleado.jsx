@@ -24,7 +24,7 @@ const FormularioEmpleado = ({onGuardar, onCancelar}) => {
         const cargarPuestos = async () => {
             try {
                 const puestosData = await empleadosService.getPuestos();
-                HTMLFormControlsCollection.log('Puestos cargados:', puestosData);
+                console.log('Puestos cargados:', puestosData);
                 setPuestos(puestosData);
 
                 if (puestosData.length > 0) {
