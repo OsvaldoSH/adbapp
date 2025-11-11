@@ -14,10 +14,19 @@ const Empleados = () => {
     const abrirModal = () => setModalAbierto(true);
     const cerrarModal = () => setModalAbierto(false);
 
-    const guardarEmpleado = (datosEmpleado) => {
-        console.log('Guardando: ', datosEmpleado);
-        // Aquí llamaremos al servicio
-        cerrarModal();
+    const guardarEmpleado = async (datosEmpleado) => {
+        try {
+            await empleadosService.createEmpleado(datosEmpleado);
+            const puestoNombre = puestos.find(p => p.id == datosEmpleado.puesto_id)?.nombre_puesto || 'N/A';
+            alert(`✅ Empleado agregado:\n${datosEmpleado.nombre} ${datosEmpleado.apellido} \nPuesto: ${puestoNombre}`);
+            const empleadosData = await empleadosService.getEmpleados();
+            setEmpleados(empleadosData);
+            cerrarModal();
+            
+        } catch (error) {
+            console.error('Error guardando empleado:', error);
+            alert('Error al guardar empleado');
+        }
     };
 
     useEffect(() => {

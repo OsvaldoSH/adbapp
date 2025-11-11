@@ -69,7 +69,7 @@ const FormularioEmpleado = ({onGuardar, onCancelar}) => {
                 setFormData({...formData, puesto_id: e.target.value})} required >
                     {puestos.map(puesto => (
                         <option key={puesto.id} value={puesto.id}>
-                            {puesto.nombre_puesto}
+                            {puesto.nombre_puesto.charAt(0).toUpperCase() + puesto.nombre_puesto.slice(1)}
                         </option>
                     ))}
                 </select>
