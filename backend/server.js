@@ -61,6 +61,13 @@ app.get('/api/empleados', (req, res) => {
     });
 });
 
+app.get('/puestos', (req, res) => {
+    db.query('SELECT * FROM puesto', (err, results) => {
+        if (err) return res.status(500).json({error:err});
+        res.json(results);
+    });
+});
+
 // Puerto del servidor
 const PORT = 3001;
 app.listen(PORT, () => {
