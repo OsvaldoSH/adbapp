@@ -5,8 +5,6 @@
 
 .empleados-page h1 {
     color: #D4AF37;
-    margin-bottom: 2rem;
-    text-align: center;
 }
 
 .empleados-header {
@@ -16,13 +14,50 @@
     margin-bottom: 2rem;
     width: 100%;
     padding: 0 1rem;
+    min-height: 60px;
+}
+
+.empleados-header h1 {
+    color: #D4AF37;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .empleados-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
     gap: 1rem;
     justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .empleados-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        position: relative;
+    }
+    .empleados-header {
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: nowrap;
+        min-height: 50px;
+    }
+    .empleados-header h1{
+        font-size: 24px;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .btn-agregar {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
 }
 
 .cargando, .error {
@@ -52,6 +87,10 @@
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: fit-content;
 }
 
 .btn-agregar:hover {

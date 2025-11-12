@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaLaptop, FaUserTie, FaWarehouse, FaTruck, FaUser } from 'react-icons/fa';
-
 import './TarjetaEmpleado.css';
 
-const TarjetaEmpleado = ({empleado}) => {
-
-    const [expandido, setExpandido ]= useState(false);
-
+const TarjetaEmpleado = ({empleado, expandido, onExpandir }) => {
     const formatearFecha = (fechaISO) => {
         const fecha = new Date(fechaISO);
         return fecha.toLocaleDateString('es-MX');
@@ -22,7 +18,10 @@ const TarjetaEmpleado = ({empleado}) => {
     };
 
     return (
-        <div className="tarjeta-empleado">
+        <div
+            className={`tarjeta-empleado ${expandido ? 'expandido' : ''}`}
+            onClick={() => onExpandir(empleado.id)} // ← Clic en cualquier parte expande/contrae
+        >
             <div className="empleado-foto">
                 <div className="foto-placeholder">
                     {obtenerIcono(empleado.puesto)}
@@ -33,13 +32,8 @@ const TarjetaEmpleado = ({empleado}) => {
                 <h3>{empleado.nombre} {empleado.apellido}</h3>
                 <p className="empleado-puesto">{empleado.puesto}</p>
 
-                {/*Solo movil  con boton de expandir */}
-                <div className="movile-expandir" onClick={()=> setExpandido(!expandido)}>
-                    {expandido ? '▲ Menos' : '▼ Más'}
-                </div>
-
                 {/* Contenido expandible */}
-                <div className={`empleado-detalles ${expandido ? 'expandido' : ''}`}>
+                <div className="empleado-detalles">
                     <p className="empleado-apodo">"{empleado.apodo}"</p>
                     <p><span>Edad:</span>{empleado.edad}<span> años</span></p>
                     <p><span>Ingreso:</span>{formatearFecha(empleado.fecha_ingreso)}</p>

@@ -21,18 +21,28 @@
     overflow: auto;
 }
 
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
 .modal-header h2 {
     color: #D4AF37;
     margin: 15px;
 }
 
 .modal-close {
+    position: absolute;
+    right: 1.5rem;
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
     color: #666;
-    text-align: left;
+    text-align: center;
 }
 
 .modal-body {

@@ -38,7 +38,7 @@ const FormularioEmpleado = ({onGuardar, onCancelar}) => {
     }, []);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>Nombre</label>
                 <input type="text" value={formData.nombre} onChange={(e) => 
@@ -64,7 +64,7 @@ const FormularioEmpleado = ({onGuardar, onCancelar}) => {
             </div>
 
             <div className="form-group">
-                <label>puesto</label>
+                <label>Puesto</label>
                 <select value={formData.puesto_id} onChange={(e) => 
                 setFormData({...formData, puesto_id: e.target.value})} required >
                     {puestos.map(puesto => (

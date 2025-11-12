@@ -9,5 +9,13 @@ export const empleadosService = {
     getPuestos: async () => {
         const response = await api.get('/puestos');
         return response.data;
+    },
+
+    createEmpleado: async (empleadoData) => {
+        const response = await api.post('/empleados', empleadoData);
+        return response.data;
     }
-}
+
+};
+
+export default empleadosService;

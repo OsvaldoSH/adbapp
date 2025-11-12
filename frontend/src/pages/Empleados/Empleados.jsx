@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TarjetaEmpleado from "../../components/TarjetaEmpleado/TarjetaEmpleado";
 import Modal from "../../components/Modal/Modal";
 import FormularioEmpleado from "../../components/FormularioEmpleado/FormularioEmpleado";
-import { empleadosService } from "../../services/empleadosService";
+import empleadosService  from "../../services/empleadosService";
 import './Empleados.css';
 
 const Empleados = () => {
@@ -10,6 +10,8 @@ const Empleados = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [modalAbierto, setModalAbierto] = useState(false);
+    const [puestos, setPuestos ] = useState([]);
+    const [empleadoExpandido, setEmpleadoExpandido] = useState(null);
 
     const abrirModal = () => setModalAbierto(true);
     const cerrarModal = () => setModalAbierto(false);
@@ -24,10 +26,28 @@ const Empleados = () => {
             cerrarModal();
             
         } catch (error) {
-            console.error('Error guardando empleado:', error);
+            console.error('Error completo:', error);
+            console.error('Mensaje:', error.message);
             alert('Error al guardar empleado');
         }
     };
+
+    useEffect(() => {
+        console.log('Servicio cargado:', empleadosService);
+        console.log('createEmpleado esiste?', typeof empleadosService.createEmpleado);
+    },[]);
+
+    useEffect(() => {
+        const cargarPuestos = async () => {
+            try {
+                const puestosData = await empleadosService.getPuestos();
+                setPuestos(puestosData);
+            } catch (error) {
+                console.error('Error al cargar los puestos:', error);
+            }
+        };
+        cargarPuestos();
+    })
 
     useEffect(() => {
         const cargarEmpleados = async () => {
@@ -69,7 +89,7 @@ const Empleados = () => {
             <div className="empleados-header">
                 <h1>Empleados</h1>
                 <button className="btn-agregar" onClick={abrirModal}>
-                    + Agregar Empleado
+                    + Add
                 </button>
             </div>
 
@@ -78,6 +98,12 @@ const Empleados = () => {
                     <TarjetaEmpleado
                         key={empleado.id}
                         empleado={empleado}
+                        expandido={empleado.id === empleadoExpandido}
+                        onExpandir={(id) => {
+                            console.log('Expandiendo empleado:', id);
+                            console.log('Empleado actual expandido:', empleadoExpandido);
+                            setEmpleadoExpandido(id === empleadoExpandido ? null : id)}
+                        }    
                     />
                 ))}
             </div>
