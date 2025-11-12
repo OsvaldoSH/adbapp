@@ -30,8 +30,7 @@ const TarjetaEmpleado = ({empleado, expandido, onExpandir }) => {
 
             <div className="empleado-info">
                 <h3>{empleado.nombre} {empleado.apellido}</h3>
-                <p className="empleado-puesto">{empleado.puesto}</p>
-
+                <p className="empleado-puesto">{empleado.puesto.charAt(0).toUpperCase() + empleado.puesto.slice(1)}</p>
                 {/* Contenido expandible */}
                 <div className="empleado-detalles">
                     <p className="empleado-apodo">"{empleado.apodo}"</p>
