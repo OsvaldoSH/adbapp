@@ -14,6 +14,8 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    width: 100%;
+    padding: 0 1rem;
 }
 
 .empleados-grid {

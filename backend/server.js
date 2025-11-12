@@ -68,6 +68,24 @@ app.get('/api/puestos', (req, res) => {
     });
 });
 
+app.post('/api/empleados', (req, res) => {
+    const {nombre, apellido, edad, apodo, puesto_id, fecha_ingreso } = req.body;
+
+    const query = `
+        INSERT INTO empleado (nombre, apellido, edad, apodo, puesto_id, fecha_ingreso, estado)
+        VALUES (?,?,?,?,?,?, 'activo')
+    `;
+
+    db.query(query, [nombre, apellido, edad, apodo, puesto_id, fecha_ingreso], (err, results) => {
+        if (err) {
+            console.error('Error insertando empleado:', err);
+            return res.status(500).json({error: 'Error en el servidor'});
+        }
+        res.json({ success: true, id: results.insertId});
+    });
+});
+
+
 // Puerto del servidor
 const PORT = 3001;
 app.listen(PORT, () => {
