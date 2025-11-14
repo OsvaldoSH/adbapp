@@ -1,0 +1,70 @@
+.tarjeta-ruta-comodato {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 250px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.tarjeta-ruta-comodato:hover {
+    transform: translateY(-5px);
+}
+
+.ruta-header h3 {
+    color: #333;
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    border-bottom: 2px, solid #D4AF37;
+    padding-bottom: 0.5rem;
+}
+
+.ruta-info {
+    margin-bottom: 1.5rem;
+}
+
+.vendedor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.vendedor .label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.vendedor .valor {
+    font-weight: bold;
+    color: #333;
+    font-size: 1rem;
+}
+
+.comodatos-principal {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    border: 2px solid #D4AF37;
+}
+
+.comodatos-numero {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #D4AF37;
+    line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.comodatos-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
