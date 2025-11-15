@@ -168,5 +168,87 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
         onGuardar(formData);
     };
 
+    return (
+        <form className="form-contrato" onsSubmit={handleSubmit}>
+            {/* Seccion del cliente*/}
+            <div className="form-section">
+                <h3>Datos del Cliente</h3>
+                <div className="form-group">
+                    <label>Clave SIVE</label>
+                    <input type="text"
+                        value={formData.clave_sive}
+                        onChange={(e) =>handleClaveSiveChange(e.target.value)}
+                        placeholder="Ingrese clave SIVE..."
+                        required
+                        disabled={cargando}
+                    />
+                    {cargando && <div className="cargando">Buscando...</div>}
+                </div>
+
+                <div className="form-group">
+                    <label>Nombre</label>
+                    <input type="text" value={formData.nombre} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Encargado</label>
+                    <input type="text" value={formData.encargado} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Direccion</label>
+                    <input type="text" value={formData.direccion} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Municipio</label>
+                    <input type="text" value={formData.municipio} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Telefono</label>
+                    <input type="text" value={formData.telefono} readOnly className="campo-readonly"/>
+                </div>
+            </div>
+
+            {/* SECCION ENFRIADOR */}
+            <div className="form-section">
+                <h3>Datos del Enfriador</h3>
+
+                <div className="form-group">
+                    <label>Numero de Serie *</label>
+                    <input type="text" value={formData.numero_serie}
+                     onChange={(e) => handleNumeroSerieChange(e.target.value)}
+                     placeholder="Ingrese el numero de serie..."
+                     required
+                     disabled={cargando}
+                     />
+                </div>
+
+                <div className="form-group">
+                    <label>Marca</label>
+                    <input type="text" value={formData.marca} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Modelo</label>
+                    <input type="text" value={formData.modelo} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Tipo</label>
+                    <input type="text" value={formData.tipo} readOnly className="campo-readonly"/>
+                </div>
+
+                <div className="form-group">
+                    <label>Precio</label>
+                    <input type="text" value={formData.precio} readOnly className="campo-readonly"/>
+                </div>
+            </div>
+
+            
+        </form>
+    )
+
     
 }
