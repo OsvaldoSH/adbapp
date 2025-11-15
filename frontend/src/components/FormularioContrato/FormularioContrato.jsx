@@ -242,11 +242,27 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
 
                 <div className="form-group">
                     <label>Precio</label>
-                    <input type="text" value={formData.precio} readOnly className="campo-readonly"/>
+                    <input type="text" value={`$${formData.precio}`} readOnly className="campo-readonly precio"/>
                 </div>
             </div>
 
-            
+            {/* Seccion del contrato */}
+            <div className="form-section">
+                <h3>Datos del Contrato</h3>
+
+                <div className="form-group">
+                    <label>Comentario</label>
+                    <textarea
+                        value={formData.comentario}
+                        onChange={(e) => setFormData({...formData, comentario: e.target.value})}
+                        rows="3"
+                        placeholder="Observaciones adicionales..."
+                    />
+                </div>
+
+                
+            </div>
+
         </form>
     )
 
