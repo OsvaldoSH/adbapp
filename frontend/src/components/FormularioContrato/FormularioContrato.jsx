@@ -260,7 +260,23 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
                     />
                 </div>
 
-                
+                <div className="form-group">
+                    <label>Elaborado por *</label>
+                    <select
+                        value={formData.elaborado_por_id}
+                        onChange={(e) => setFormData({...formData, elaborado_por_id: e.target.value})}
+                        required
+                    >
+                        <option value="">Seleccione...</option>
+                        {empleadosElabora.map(empleado => (
+                            <option key={empleado.id} value={empleado.id}>
+                                {empleado.nombre} {empleado.apellido}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+
             </div>
 
         </form>
