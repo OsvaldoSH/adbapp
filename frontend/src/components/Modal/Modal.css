@@ -34,17 +34,6 @@
     margin: 15px;
 }
 
-.modal-close {
-    position: absolute;
-    right: 1.5rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
-    text-align: center;
-}
-
 .modal-body {
     padding: 1.5rem;
 }

@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Empleados from './pages/Empleados/Empleados';
 import ControlVacio from './pages/ControlVacio/ControlVacio';
+import ContratosComodato from './pages/ContratosComodato/ContratosComodato';
 import './App.css';
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/control-vacio" element={<ControlVacio />}/>
-            <Route path='/empleados' element={<Empleados/>}/>
+            <Route path="/empleados" element={<Empleados/>}/>
+            <Route path="/comodatos" element={<ContratosComodato/>}/>
           </Routes>
         </main>
       </div>

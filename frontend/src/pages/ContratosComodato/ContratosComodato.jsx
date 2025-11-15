@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './ContratosComodatos.css';
+import './ContratosComodato.css';
 import TarjetaRutaComodato from "../../components/TarjetaRutaComodato/TarjetaRutaComodato";
 import { contratosService } from "../../services/contratosService";
 import Modal from "../../components/Modal/Modal";
@@ -8,7 +8,7 @@ import FormularioContrato from "../../components/FormularioContrato/FormularioCo
 
 
 const ContratosComodato = () => {
-    const [estadisticas, setEstaditicas] = useState({
+    const [estadisticas, setEstadisticas] = useState({
         totalComodatos: 0,
         comodatosPorRuta: []
     });
@@ -27,15 +27,15 @@ const ContratosComodato = () => {
             const datosEjemplo ={
                 totalComodatos: 45,
                 comodatosPorRuta: [
-                    {id:1, nombreruta: "RUTA 01",
+                    {id:1, nombreRuta: "RUTA 01",
                     vendedor: "Juan Perez", cantidadComodatos: 12},
-                    {id:1, nombreruta: "RUTA 02",
+                    {id:2, nombreRuta: "RUTA 02",
                     vendedor: "Francisco Mendez", cantidadComodatos: 22},
-                    {id:1, nombreruta: "RUTA 03",
+                    {id:3, nombreRuta: "RUTA 03",
                     vendedor: "Arturo Quirino", cantidadComodatos: 6},
                 ]
             };
-            setEstaditicas(datosEjemplo);
+            setEstadisticas(datosEjemplo);
         } catch (error) {
             console.error('Error al cargar estadisticas:', error);
         }finally {
@@ -67,22 +67,22 @@ const ContratosComodato = () => {
     }
 
     return (
-        <div className="contrato-comodatos-page">
+        <div className="contratos-comodato-page">
                 <div className="page-header">
                     <h1>Comodatos</h1>
                     <button className="btn-nuevo-comodato"
                     onClick={ ()=> setModalAbierto(true) }>
-                        Nuevo Comodato
+                        + Add
                     </button>
                 </div>
 
             {/* Seccion de Estadisticas */}
 
-            <div className="estaditicas-section">
+            <div className="estadisticas-section">
                 {/* Tarjeta Total*/}
                 <div className="tarjeta-total-comodato">
                     <div className="total-header">
-                        <h3>TOTAL COMODATOS</h3>
+                        <h3>TOTAL</h3>
                     </div>
                     <div className="total-principal">
                         <div className="total-numero">{estadisticas.totalComodatos}</div>

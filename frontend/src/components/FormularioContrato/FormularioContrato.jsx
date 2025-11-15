@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './FormularioContrato.css'
 import { contratosService } from "../../services/contratosService";
 
-const FormularioContrato = ( { onGuardar, onCancelar}) => {
+const FormularioContrato = ({ onGuardar, onCancelar }) => {
     const [formData, setFormData] = useState({
         clave_sive: '',
         cliente_id: '',
@@ -26,20 +26,18 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
         autorizado_por_id: ''
     });
 
-    const [empleados, setEmpleados ] = useState([]);
     const [empleadosElabora, setEmpleadosElabora ] = useState([]);
     const [empleadosAutoriza, setEmpleadosAutoriza ] = useState([]);
 
-    const [ cargando, setCargando] = useState([false]);
+    const [ cargando, setCargando] = useState(false);
 
     useEffect(() => {
         const cargarEmpleados = async () => {
             try {
                 const empleadosData = await contratosService.getEmpleados();
-                setEmpleados(empleadosData);
 
-                const elabora = empleadosData.filer(emp =>
-                    emp.puesto_id ===2
+                const elabora = empleadosData.filter(emp =>
+                    emp.puesto_id === 2
                 );
 
                 const autoriza = empleadosData.filter(emp =>
@@ -58,7 +56,7 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
                 }
 
             } catch (error) {
-                console.error('Error cargando empleados:'. error);
+                console.error('Error cargando empleados:', error);
             }
         };
         cargarEmpleados();
@@ -83,7 +81,7 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
                         direccion: clienteData.direccion,
                         municipio: clienteData.municipio,
                         telefono: clienteData.telefono,
-                        ruta_id: clienteData.id,
+                        ruta_id: clienteData.ruta_id,
                         vendedor_id: clienteData.vendedor_id || ''                                                                                                                                                                                                                                                                                                         
                     }));
                 } else {
@@ -116,16 +114,14 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
                         tipo: enfriadorData.tipo,
                         precio: enfriadorData.precio
                     }));
-                }
-
-                else {
+                } else {
                     limpiarCamposEnfriador();
                 }
             } catch (error) {
                 console.error('Error buscando el enfriador:', error);
                 limpiarCamposEnfriador();
             } finally {
-                setCargando(false)
+                setCargando(false);
             }     
         } else {
             limpiarCamposEnfriador();
@@ -158,9 +154,9 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
     };
 
     const handleSubmit = (e) => {
-        e.prentDefault();
+        e.preventDefault();
 
-        if (!formData.cliente_id || !formData.enfriador_id || !formData.elaborado_por_id || formData.autorizado_por_id) {
+        if (!formData.cliente_id || !formData.enfriador_id || !formData.elaborado_por_id || !formData.autorizado_por_id) {
             alert('Por favor complete todos los campos requeridos');
              return;      
         }
@@ -169,7 +165,7 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
     };
 
     return (
-        <form className="form-contrato" onsSubmit={handleSubmit}>
+        <form className="form-contrato" onSubmit={handleSubmit}>
             {/* Seccion del cliente*/}
             <div className="form-section">
                 <h3>Datos del Cliente</h3>
@@ -276,11 +272,31 @@ const FormularioContrato = ( { onGuardar, onCancelar}) => {
                     </select>
                 </div>
 
-
+                <div className="form-group">
+                    <label>Autorizado por *</label>
+                    <select
+                        value={formData.autorizado_por_id}
+                        onChange={(e) => setFormData({...formData, autorizado_por_id: e.target.value})}
+                        required
+                    >
+                        <option value="">Seleccione..</option>
+                        {empleadosAutoriza.map(empleado => (
+                            <option key={empleado.id} value={empleado.id}>
+                                {empleado.nombre} {empleado.apellido}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
+            <div className="form-actions">
+                <button type="button" onClick={onCancelar}>Cancelar</button>
+                <button type="submit" disabled={cargando}>
+                    {cargando ? 'Guardando...' : 'Guardar'}
+                </button>
+            </div>
         </form>
-    )
+    );
+};
 
-    
-}
+export default FormularioContrato;
