@@ -29,7 +29,7 @@ export const contratosService = {
             return response.data;
         } catch (error) {
             if (error.response?.status === 404) {
-                return null; //Enfriador no encontrado
+                return null; //Enfriador no encontrado update to 18/11/2025
             }
             throw error.response?.data || error;
         }
@@ -42,5 +42,6 @@ export const contratosService = {
         } catch (error) {
             throw error.response?.data || error;
         }
+
     },
 };
