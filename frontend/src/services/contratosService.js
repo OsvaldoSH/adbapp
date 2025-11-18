@@ -35,5 +35,12 @@ export const contratosService = {
         }
     },
 
-    
+    async createComodato(comodatoData) {
+        try {
+            const response = await api.post('/comodatos', comodatoData);
+            return response.data;
+        } catch (error) {
+            throw error.response?.data || error;
+        }
+    },
 };
